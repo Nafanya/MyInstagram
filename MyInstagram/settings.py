@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
-    'MyInstagram'
+    'MyInstagram',
 ]
 
 MIDDLEWARE_CLASSES = [
