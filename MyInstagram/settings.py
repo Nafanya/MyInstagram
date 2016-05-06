@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'MyInstagram',
     'debug_toolbar',
+    'MyInstagram'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -83,7 +83,8 @@ DATABASES = {
         'NAME': DATABASE_NAME,
         'USER': DATABASE_USERNAME,
         'PASSWORD': DATABASE_PASSWORD,
-        'host': 'localhost',
+        #'host': 'localhost',
+        'host': 'mysql://b4a090654ef7c4:c937e2ec@us-cdbr-iron-east-03.cleardb.net/heroku_f6386eed522ef18?reconnect=true',
         'PORT': '',
     }
 }
