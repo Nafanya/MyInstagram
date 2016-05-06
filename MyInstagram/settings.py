@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
 from keys import SECRET_KEY_PROJECT, DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -78,18 +79,17 @@ WSGI_APPLICATION = 'MyInstagram.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'host': 'localhost',
-        'PORT': '',
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+    #    'NAME': DATABASE_NAME,
+    #    'USER': DATABASE_USERNAME,
+    #    'PASSWORD': DATABASE_PASSWORD,
+    #    'host': 'localhost',
+    #    'PORT': '',
+    #}
 }
 
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+DATABASES['default'] =  dj_database_url.config(conn_max_age=500)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
