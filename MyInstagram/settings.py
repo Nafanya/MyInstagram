@@ -15,7 +15,7 @@ import dj_database_url
 from keys import SECRET_KEY_PROJECT, DATABASE_NAME, DATABASE_USERNAME, DATABASE_PASSWORD
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 _PATH = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -28,8 +28,6 @@ SECRET_KEY = SECRET_KEY_PROJECT
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -79,17 +77,26 @@ WSGI_APPLICATION = 'MyInstagram.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': DATABASE_NAME,
-    #    'USER': DATABASE_USERNAME,
-    #    'PASSWORD': DATABASE_PASSWORD,
-    #    'host': 'localhost',
-    #    'PORT': '',
-    #}
+    'mysql': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USERNAME,
+        'PASSWORD': DATABASE_PASSWORD,
+        'host': 'localhost',
+        'PORT': '',
+    },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
-DATABASES['default'] =  dj_database_url.config(conn_max_age=500)
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -140,3 +147,7 @@ STATICFILES_FINDERS = (
 )
 
 ADMIN_MEDIA_PREFIX = '/static/admin/'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
