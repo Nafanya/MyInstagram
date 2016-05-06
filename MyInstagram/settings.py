@@ -27,7 +27,7 @@ _PATH = os.path.abspath(os.path.dirname(__file__))
 SECRET_KEY = SECRET_KEY_PROJECT
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
