@@ -84,7 +84,7 @@ DATABASES = {
         'USER': DATABASE_USERNAME,
         'PASSWORD': DATABASE_PASSWORD,
         #'host': 'localhost',
-        'host': 'mysql://b4a090654ef7c4:c937e2ec@us-cdbr-iron-east-03.cleardb.net/heroku_f6386eed522ef18?reconnect=true',
+        'host': 'mysql://b4a090654ef7c4:c937e2ec@us-cdbr-iron-east-03.cleardb.net/heroku_f6386eed522ef18',
         'PORT': '',
     }
 }
