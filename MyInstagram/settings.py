@@ -16,7 +16,7 @@ from keys import SECRET_KEY_PROJECT, DATABASE_NAME, DATABASE_USERNAME, DATABASE_
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -130,15 +130,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'files', 'media')
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(_PATH, 'files', 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'files', 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(_PATH, 'static'),)
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
