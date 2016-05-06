@@ -77,17 +77,16 @@ WSGI_APPLICATION = 'MyInstagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': DATABASE_NAME,
-#        'USER': DATABASE_USERNAME,
-#        'PASSWORD': DATABASE_PASSWORD,
-#        #'host': 'localhost',
-#        'host': 'mysql://b092f564b6997d:3a8e93da@us-cdbr-iron-east-03.cleardb.net/heroku_cd55c2006486812',
-#        'PORT': '',
-#    }
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': DATABASE_NAME,
+        'USER': DATABASE_USERNAME,
+        'PASSWORD': DATABASE_PASSWORD,
+        'host': 'localhost',
+        'PORT': '',
+    }
+}
 
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
